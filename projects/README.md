@@ -7,6 +7,7 @@
 | 项目名称 | 描述 | 技术栈 | 状态 | 路径 |
 | :--- | :--- | :--- | :--- | :--- |
 | `demo-starter` | 演示示例模板工程 | Markdown | ✅ Ready | [demo-starter](./demo-starter/) |
+| `canada-baby-deals` | 加拿大黑五与12月女宝宝衣服/鞋子/玩具/家居高性价比折扣爬虫 | Python, JSON, HTML | 🚀 Active | [canada-baby-deals](./canada-baby-deals/) |
 
 ---
 
