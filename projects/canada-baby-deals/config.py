@@ -72,13 +72,29 @@ SHOPIFY_STORES = {
             {"handle": "bundle-up-collection", "category": "clothes", "name": "Bundle Up Winter Collection"},
             {"handle": "newborn-sale", "category": "clothes", "name": "Newborn Essentials Sale"}
         ]
+    },
+    "louloulollipop": {
+        "name": "Loulou Lollipop (Vancouver)",
+        "base_url": "https://louloulollipop.ca",
+        "currency": "CAD",
+        "description": "Vancouver designer baby brand famous for bamboo & TENCEL sleep bags, silicone teethers, and nursery gifts.",
+        "collections": [
+            {"handle": "sale", "category": "home", "name": "Loulou Lollipop Official Sale (特惠专区)"},
+            {"handle": "0-5-tog-sleep-bags", "category": "home", "name": "0.5 TOG Baby Sleep Bags (四季透气睡袋)"},
+            {"handle": "2-5-tog-sleep-bags", "category": "home", "name": "2.5 TOG Winter Warm Sleep Bags (秋冬加厚睡袋)"},
+            {"handle": "teethers", "category": "toys", "name": "Baby Silicone Teethers & Toys (婴儿牙胶玩具)"}
+        ]
     }
 }
 
-# Flipp Search Queries for Canadian Retailers & Flyers (Carter's, Walmart, Toys R Us, etc.)
+# Flipp Search Queries for Canadian Retailers & Flyers (Carter's, TCP, Walmart, Toys R Us, etc.)
 FLIPP_SEARCHES = [
     {"query": "carters baby girl", "category": "clothes", "brand": "Carter's"},
     {"query": "carters baby outfit", "category": "clothes", "brand": "Carter's"},
+    {"query": "the childrens place baby", "category": "clothes", "brand": "The Children's Place"},
+    {"query": "childrens place baby girl", "category": "clothes", "brand": "The Children's Place"},
+    {"query": "joe fresh baby girl", "category": "clothes", "brand": "Joe Fresh"},
+    {"query": "old navy baby girl", "category": "clothes", "brand": "Old Navy"},
     {"query": "baby girl winter boots", "category": "shoes", "brand": "Multi-Brand"},
     {"query": "baby girl toys", "category": "toys", "brand": "Toys R Us / Multi"},
     {"query": "baby nursery", "category": "home", "brand": "Multi-Brand"},

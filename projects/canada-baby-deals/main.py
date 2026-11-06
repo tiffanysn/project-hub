@@ -83,7 +83,7 @@ def print_terminal_summary(deals: list):
 
 def main():
     parser = argparse.ArgumentParser(description="Canada Baby Girl Holiday Deals Scraper")
-    parser.add_argument("--brand", choices=["all", "dpd", "stonz", "konny", "flipp", "curated"], default="all",
+    parser.add_argument("--brand", choices=["all", "dpd", "stonz", "konny", "loulou", "flipp", "curated"], default="all",
                         help="Scrape specific brand or 'all'")
     parser.add_argument("--category", choices=["all", "clothes", "shoes", "toys", "home"], default="all",
                         help="Filter by specific category")
@@ -99,14 +99,14 @@ def main():
 
     print(f"\n🚀 开始抓取加拿大黑五 & 12月女宝宝折扣数据 (最低折扣要求: {args.min_discount}%)...")
 
-    # 1. Shopify stores (DPD, Stonz, Konny)
-    if args.brand in ["all", "dpd", "stonz", "konny"]:
+    # 1. Shopify stores (DPD, Stonz, Konny, Loulou Lollipop)
+    if args.brand in ["all", "dpd", "stonz", "konny", "loulou"]:
         shopify_scraper = ShopifyScraper()
         if args.brand == "all":
-            print("  ⏳ 正在拉取 Stonz / Deux par Deux / Konny 官方实时清仓数据...")
+            print("  ⏳ 正在拉取 Stonz / Deux par Deux / Konny / Loulou Lollipop 官方实时清仓数据...")
             shopify_deals = shopify_scraper.scrape_all(min_discount=args.min_discount)
         else:
-            brand_map = {"dpd": "deuxpardeux", "stonz": "stonz", "konny": "konny"}
+            brand_map = {"dpd": "deuxpardeux", "stonz": "stonz", "konny": "konny", "loulou": "louloulollipop"}
             shopify_deals = shopify_scraper.scrape_store(brand_map[args.brand], min_discount=args.min_discount)
         all_deals.extend(shopify_deals)
         print(f"  ✅ 官方独立站抓取完成: 获取 {len(shopify_deals)} 件实时好价！")

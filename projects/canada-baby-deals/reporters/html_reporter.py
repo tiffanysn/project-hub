@@ -402,6 +402,24 @@ def generate_html_dashboard(deals: List[Dict], output_path: str):
             <input type="text" id="search-input" class="search-input" placeholder="🔍 搜索品牌、商品或款式...">
         </div>
 
+        <div class="controls" style="margin-top: -14px;">
+            <div class="filter-group" id="brand-filters">
+                <button class="btn-filter active" data-brand="all">全部品牌 (12+)</button>
+                <button class="btn-filter" data-brand="deuxpardeux">Deux par Deux</button>
+                <button class="btn-filter" data-brand="stonz">Stonz</button>
+                <button class="btn-filter" data-brand="konny">Konny</button>
+                <button class="btn-filter" data-brand="louloulollipop">Loulou Lollipop</button>
+                <button class="btn-filter" data-brand="tcp">The Children's Place</button>
+                <button class="btn-filter" data-brand="uniqlo">优衣库 Uniqlo</button>
+                <button class="btn-filter" data-brand="nest">Nest Designs</button>
+                <button class="btn-filter" data-brand="hm">H&M</button>
+                <button class="btn-filter" data-brand="carters">Carter's</button>
+                <button class="btn-filter" data-brand="gap">Gap / Old Navy</button>
+                <button class="btn-filter" data-brand="zara">Zara</button>
+                <button class="btn-filter" data-brand="joefresh">Joe Fresh</button>
+            </div>
+        </div>
+
         <!-- Deals Grid -->
         <div class="deals-grid" id="deals-container"></div>
     </div>
@@ -410,6 +428,7 @@ def generate_html_dashboard(deals: List[Dict], output_path: str):
         const allDeals = {deals_json};
         let currentCat = "all";
         let currentTier = "all";
+        let currentBrand = "all";
         let searchQuery = "";
 
         const categoryNames = {{
@@ -426,6 +445,15 @@ def generate_html_dashboard(deals: List[Dict], output_path: str):
             const filtered = allDeals.filter(d => {{
                 // Category filter
                 if (currentCat !== "all" && d.category !== currentCat) return false;
+
+                // Brand filter
+                if (currentBrand !== "all") {{
+                    const bKey = (d.brand_key || "").toLowerCase();
+                    const bName = (d.brand || "").toLowerCase();
+                    if (!bKey.includes(currentBrand.toLowerCase()) && !bName.includes(currentBrand.toLowerCase())) {{
+                        return false;
+                    }}
+                }}
 
                 // Tier filter
                 if (currentTier === "steal" && (d.discount_pct < 50 && d.price_cad > 15)) return false;
@@ -495,6 +523,15 @@ def generate_html_dashboard(deals: List[Dict], output_path: str):
                 document.querySelectorAll("#tier-filters .btn-filter").forEach(b => b.classList.remove("active"));
                 btn.classList.add("active");
                 currentTier = btn.dataset.tier;
+                renderDeals();
+            }});
+        }});
+
+        document.querySelectorAll("#brand-filters .btn-filter").forEach(btn => {{
+            btn.addEventListener("click", () => {{
+                document.querySelectorAll("#brand-filters .btn-filter").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentBrand = btn.dataset.brand;
                 renderDeals();
             }});
         }});
